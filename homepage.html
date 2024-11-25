@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HighLevel</title>
+    <
+    <link rel="stylesheet" href="hp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="#" class="logo-link">
+                <img src="logo.png" alt="Logo" class="logo">
+            </a>
+            <!-- Navegação (Sobre Nós, etc.) -->
+            <nav>
+                <ul>
+                    <li><a href="#sobre-nos-1">Sobre nós</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#categorias">Categorias</a></li>
+                    <li><a href="#seja-hlmais">Seja HL+</a></li>
+                </ul>
+            </nav>
+    
+            <!-- Botão de Login -->
+            <div class="login-btn-container">
+                <button id="login-btn" class="login-btn">
+                    <i class="fa fa-user"></i> <!-- Ícone do Font Awesome -->
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Seção principal -->
+    <main>  
+
+        <section id="categorias">
+            <h2>O QUE VOCÊ IRÁ APRENDER?</h2>
+            <p id="info-cat">Passe o mouse por cima da categoria desejada!</p>
+            <div class="categoria-blocos">
+                <!-- Categorias com banners -->
+                <div class="bloco">
+                    <div class="banner">
+                        <img src="banner-fps.png" alt="FPS">
+                    </div>
+                    <div class="descricao">
+                        <p>JOGOS DE FPS: <br>Encontre guias e tutoriais sobre jogos de tiro em primeira pessoa.</p>
+                    </div>
+                </div>
+                <div class="bloco">
+                    <div class="banner">
+                        <img src="banner-esportes.png" alt="Esportes">
+                    </div>
+                    <div class="descricao">
+                        <p>JOGOS DE ESPORTES: <br>Guias para jogos como FIFA e outros simuladores esportivos.</p>
+                    </div>
+                </div>
+                <div class="bloco">
+                    <div class="banner">
+                        <img src="banner-esportes.png" alt="RPG">
+                    </div>
+                    <div class="descricao">
+                        <p>JOGOS DE RPG: <br>Dicas e estratégias para os melhores RPGs.</p>
+                    </div>
+                </div>
+                <div class="bloco">
+                    <div class="banner">
+                        <img src="banner-esportes.png" alt="Indies">
+                    </div>
+                    <div class="descricao">
+                        <p>JOGOS INDIES: <br>Guias para aprender a jogar jogos Indies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outras seções -->
+        <section id="sobre-nos-1">
+            <h2>Sobre Nós</h2>
+            <p>Bem-vindo ao HighLevel, sua plataforma para aprender, ensinar e compartilhar sobre o mundo dos jogos!</p>
+        </section>
+
+        <section id="contato">
+            <h2>Contato</h2>
+            <p>Entre em contato conosco para mais informações!</p>
+        </section>
+
+        <section id="seja-hlmais">
+            <h2>Seja HL+</h2>
+            <p>Seja um membro premium e aproveite benefícios exclusivos como acesso antecipado e mais oportunidades!</p>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 HighLevel. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h3>Deseja fazer login ou cadastro?</h3>
+            <button id="login-option" class="popup-btn">Login</button>
+            <button id="register-option" class="popup-btn">Cadastro</button>
+            <button id="close-popup" class="close-btn">x</button>
+        </div>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="popup-overlay" id="popup-overlay"></div>
+
+    <!-- Script para controle do popup -->
+    <script>
+        const loginBtn = document.getElementById("login-btn");
+        const popup = document.getElementById("popup");
+        const overlay = document.getElementById("popup-overlay");
+        const closePopupBtn = document.getElementById("close-popup");
+        const loginOption = document.getElementById("login-option");
+        const registerOption = document.getElementById("register-option");
+
+        // Mostrar o popup e o overlay
+        loginBtn.addEventListener("click", () => {
+            overlay.style.display = 'block'; // Exibe o overlay
+            popup.style.display = 'block'; // Exibe o popup
+            setTimeout(() => {
+                overlay.classList.add("active");
+                popup.classList.add("active");
+            }, 10); // Animação de exibição
+        });
+
+        // Fechar o popup e o overlay ao clicar fora ou no X
+        closePopupBtn.addEventListener("click", closePopup);
+        overlay.addEventListener("click", closePopup); // Fechar ao clicar fora do popup
+
+        // Função para fechar o popup
+        function closePopup() {
+            overlay.classList.remove("active");
+            popup.classList.remove("active");
+            setTimeout(() => {
+                popup.style.display = 'none';
+                overlay.style.display = 'none';
+            }, 300); // Tempo para completar a animação
+        }
+
+        // Opção de Login: redireciona para a página de login
+        loginOption.addEventListener("click", () => {
+            window.location.href = "login.html"; // Altere para o caminho correto de login
+            closePopup();
+        });
+
+        // Opção de Cadastro: redireciona para a página de cadastro
+        registerOption.addEventListener("click", () => {
+            window.location.href = "sign.html"; // Altere para o caminho correto de cadastro
+            closePopup();
+        });
+    </script>
+</body>
+</html>

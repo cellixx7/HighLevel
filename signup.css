@@ -1,0 +1,283 @@
+/* =======================================================================
+   Estilos Gerais - Homepage e Formulário
+======================================================================= */
+
+/* Variáveis de Cores */
+:root {
+    --primary-color: #ffa500; /* Cor principal (laranja) */
+    --secondary-color: #ffcc00; /* Cor secundária (amarelo) */
+    --background-dark: #1d1912; /* Cor de fundo escuro */
+}
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif; /* Define a fonte usada no corpo da página */
+    line-height: 1.5; /* Espaçamento entre as linhas de texto */
+    background-image: url('background.png'); /* Imagem de fundo */
+    background-size: cover; /* Faz a imagem cobrir toda a área visível */
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+    background-position: center top; /* Posiciona a imagem no topo centralizado */
+    background-attachment: scroll; /* Faz a imagem rolar com a página */
+    color: #f4f4f4; /* Cor do texto */
+    margin: 0; /* Remove as margens padrão do body */
+    padding: 0; /* Remove o padding padrão */
+    display: flex; /* Usa flexbox para o layout */
+    flex-direction: column; /* Organiza os elementos em coluna */
+    height: 100%; /* Garante que o corpo ocupe toda a altura da tela */
+}
+
+/* =======================================================================
+   Cabeçalho (header) - Corrigido sem o login
+======================================================================= */
+
+/* Cabeçalho fixo */
+header {
+    background-color: rgba(57, 57, 57, 0.2); /* Cor de fundo do cabeçalho com transparência */
+    color: #898989; /* Cor do texto do cabeçalho */
+    padding: 0.8rem 2rem; /* Espaçamento interno do cabeçalho */
+    position: fixed; /* Fixa o cabeçalho na tela */
+    left: 10%; /* Coloca o cabeçalho começando de 10% da largura da tela */
+    top: 40px; /* Distância do topo */
+    border-radius: 10px; /* Bordas arredondadas */
+    z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
+    backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra do cabeçalho */
+    transition: background-color 0.7s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Transições suaves */
+    border: 2px solid rgba(210, 210, 210, 0.053); /* Borda com transparência */
+    width: 80%; /* Largura do cabeçalho (80% da tela) */
+    height: 6%; /* Altura do cabeçalho */
+    display: flex; /* Usa flexbox para organizar os itens do cabeçalho */
+    align-items: center; /* Alinha verticalmente os itens */
+    justify-content: space-between; /* Espaça os itens do cabeçalho */
+}
+
+/* Cabeçalho ao passar o mouse */
+header:hover {
+    background-color: rgba(93, 93, 93, 0.3); /* Muda a cor do fundo ao passar o mouse */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
+    transform: scale(1.02); /* Aumenta o tamanho do cabeçalho ligeiramente */
+}
+
+/* Logo */
+.logo-link {
+    display: inline-block; /* Exibe o link da logo como um bloco */
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+.logo {
+    width: 50px; /* Largura da logo */
+    height: auto; /* Altura ajustada automaticamente */
+    cursor: pointer; /* Muda o cursor para mãozinha ao passar sobre a logo */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Transições suaves ao interagir com a logo */
+}
+
+/* Efeito ao passar o mouse na logo */
+.logo:hover {
+    transform: scale(1.2); /* Aumenta o tamanho da logo ao passar o mouse */
+    filter: brightness(0) invert(1); /* Inverte as cores da logo */
+}
+
+/* Container do cabeçalho */
+.header-container {
+    display: flex; /* Usa flexbox */
+    justify-content: space-between; /* Distribui os itens do cabeçalho */
+    align-items: center; /* Alinha verticalmente os itens */
+    width: 100%; /* Largura do container */
+    max-width: 1100px; /* Largura máxima */
+    margin: 0 1rem; /* Margem lateral */
+}
+
+/* Navegação (links como Sobre Nós, Contato, etc.) */
+nav ul {
+    list-style: none; /* Remove as bolinhas de lista */
+    display: flex; /* Exibe os itens de navegação em linha */
+    margin-left: auto; /* Alinha à direita */
+    padding: 0; /* Remove o padding da lista */
+}
+
+nav li {
+    margin-left: 4rem; /* Espaçamento entre os itens da navegação */
+}
+
+nav a {
+    color: #fff; /* Cor do texto dos links */
+    text-decoration: none; /* Remove o sublinhado */
+    font-size: 1rem; /* Tamanho da fonte */
+    position: relative; /* Para posicionar o efeito de linha abaixo do link */
+    display: inline-block; /* Exibe os links como blocos em linha */
+    margin: 1rem; /* Margem entre os links */
+    transition: color 0.3s ease; /* Transição suave na cor do texto */
+}
+
+nav a::after {
+    content: ''; /* Cria um pseudo-elemento após o link */
+    width: 0%; /* Inicia a linha como invisível */
+    height: 3px; /* Tamanho da linha */
+    background-color: var(--primary-color); /* Cor da linha */
+    position: absolute; /* Posiciona a linha */
+    bottom: -4px; /* Fica abaixo do link */
+    left: 0; /* Começa do início */
+    display: block; /* Exibe como bloco */
+    transition: width 0.4s ease-in-out; /* Transição suave na largura */
+}
+
+nav a:hover {
+    color: #ffcc00; /* Muda a cor do texto ao passar o mouse */
+    text-decoration: none; /* Remove o sublinhado ao passar o mouse */
+}
+
+nav a:hover::after {
+    width: 100%; /* Aumenta a linha para cobrir o link */
+}
+
+/* =======================================================================
+   Estilos para o Formulário de Cadastro
+======================================================================= */
+
+/* =======================================================================
+   Formulário de Cadastro
+======================================================================= */
+
+.form-container {
+    background-color: rgba(94, 94, 94, 0); /* Cor de fundo com transparência */
+    padding: 30px; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0); /* Sombra do formulário */
+    width: 100%; /* Largura do formulário */
+    max-width: 400px; /* Largura máxima reduzida */
+    margin: 50px auto 20px auto; /* Centraliza o formulário na página */
+    z-index: 999; /* Garante que o formulário fique acima de outros elementos */
+    position: absolute; /* Usando posição absoluta */
+    top: 50%; /* Alinha verticalmente */
+    left: 50%; /* Alinha horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste para centralizar o conteúdo */
+}
+
+/* Estilo do Formulário */
+.form-cadastro {
+    display: flex; /* Usa flexbox para os campos do formulário */
+    flex-direction: column; /* Organiza os campos em coluna */
+}
+
+/* Estilo para o Input com Ícone */
+.form-group {
+    margin-bottom: 20px; /* Espaçamento entre os campos */
+    position: relative; /* Para posicionar o ícone dentro do input */
+}
+
+.form-group label {
+    color: #ffffff; /* Cor do texto do label */
+    margin-bottom: 5px; /* Espaçamento abaixo do label */
+    font-size: 14px; /* Tamanho do texto do label */
+}
+
+/* Agrupamento do Input com Ícone */
+.input-wrapper {
+    position: relative; /* Permite posicionar o ícone dentro do input */
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 10px; /* Coloca o ícone à esquerda */
+    color: #ff9d00; /* Cor do ícone */
+    font-size: 18px; /* Tamanho do ícone */
+}
+
+/* Estilo dos Inputs */
+/* Cor do texto dentro do input */
+.form-group input {
+    width: 100%; /* Largura total do campo de input */
+    padding: 12px 30px 12px 30px; /* Espaçamento interno para o ícone à esquerda */
+    border-radius: 10px; /* Bordas arredondadas */
+    border: 1px solid #ff9d00; /* Cor da borda */
+    font-size: 14px; /* Tamanho da fonte */
+    color: #ffffff; /* Cor do texto dentro do input */
+    background-color: #96969600; /* Cor de fundo */
+    box-sizing: border-box; /* Garante que o padding não afete a largura */
+}
+
+/* Alinhamento do Texto dentro do Input */
+.form-group input::placeholder {
+    color: #fff; /* Cor do placeholder */
+    opacity: 0.7; /* Opacidade do placeholder */
+}
+
+/* Foco no input */
+.form-group input:focus {
+    border-color: var(--primary-color); /* Cor da borda ao focar */
+    box-shadow: 0 0 8px rgba(255, 165, 0, 0.3); /* Sombra ao focar */
+    outline: none; /* Remove o contorno padrão */
+}
+
+/* Ícone dentro do Input */
+.form-group .input-icon {
+    position: absolute;
+    left: 10px; /* Distância do ícone da borda esquerda */
+    top: 50%; /* Alinha o ícone verticalmente */
+    transform: translateY(-50%); /* Centraliza o ícone no meio do campo */
+    color: #ff9d00; /* Cor do ícone */
+    font-size: 16px; /* Tamanho do ícone */
+    pointer-events: none; /* Faz o ícone não interferir na interação do usuário com o input */
+}
+
+/* Botão de envio */
+.submit-btn {
+    background-color: var(--primary-color); /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Remove a borda */
+    padding: 14px; /* Espaçamento interno */
+    font-size: 18px; /* Tamanho da fonte */
+    border-radius: 8px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão ao passar sobre o botão */
+    transition: background-color 0.3s ease; /* Transição suave na cor do botão */
+}
+
+.submit-btn:hover {
+    background-color: var(--secondary-color); /* Muda a cor ao passar o mouse */
+}
+
+/* Estilo do CAPTCHA (comentado por enquanto) */
+.captcha-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* =======================================================================
+   Rodapé (footer)
+======================================================================= */
+footer {
+    text-align: center; /* Alinha o texto ao centro */
+    padding: 1px; /* Espaçamento interno */
+    background-color: #ffffff00; /* Fundo transparente */
+    backdrop-filter: blur(5px); /* Efeito de desfoque */
+    border-radius: 5px; /* Bordas arredondadas */
+    color: #fff; /* Cor do texto */
+    position: fixed; /* Fixa o footer na parte inferior */
+    bottom: 0; /* Fixa na parte inferior da tela */
+    left: 0; /* Começa na borda esquerda */
+    width: 100%; /* Largura total */
+    font-size: 0.9rem; /* Tamanho da fonte */
+}
+
+/* =======================================================================
+   Responsividade
+======================================================================= */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 20px; /* Reduz o padding do formulário em telas pequenas */
+    }
+
+    header {
+        left: 0; /* Remove o deslocamento à esquerda */
+        width: 100%; /* Largura total */
+        top: 0; /* Posiciona o cabeçalho no topo */
+    }
+
+    .logo {
+        width: 40px; /* Reduz o tamanho da logo */
+    }
+}

@@ -1,0 +1,396 @@
+/* Variáveis de Cores */
+:root {
+    --primary-color: #ffa500;
+    --secondary-color: #ffcc00;
+    --background-dark: #1d1912;
+}
+
+/* Suporte para backdrop-filter */
+@supports (backdrop-filter: blur(5px)) {
+    .seu-elemento {
+        backdrop-filter: blur(5px);
+    }
+}
+
+/* =======================================================================
+   Estilos Gerais
+======================================================================= */
+
+/* Estilo geral do corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background-image: url('background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: scroll;
+    color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%; /* Garantir que o html e body ocupem toda a altura */
+    margin: 0; /* Remover margens padrão */
+    display: flex; /* Flexbox para layout flexível */
+    flex-direction: column; /* Organizar itens na vertical */
+}
+
+/* =======================================================================
+   Cabeçalho
+======================================================================= */
+
+/* Cabeçalho fixo */
+header {
+    background-color: rgba(57, 57, 57, 0.2);
+    color: #898989;
+    padding: 0.8rem 2rem;
+    position: fixed;
+    left: 10%;
+    top: 40px;
+    border-radius: 10px;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.7s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    border: 2px solid rgba(210, 210, 210, 0.053);
+    width: 80%;
+    height: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Cabeçalho ao passar o mouse */
+header:hover {
+    background-color: rgba(93, 93, 93, 0.3);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+}
+
+/* Logo */
+.logo-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Efeito ao passar o mouse na logo */
+.logo:hover {
+    transform: scale(1.2);
+    filter: brightness(0) invert(1);
+}
+
+/* Container do cabeçalho */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 1rem;
+}
+
+/* Navegação (links como Sobre Nós, Contato, etc.) */
+nav ul {
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+    padding: 0;
+}
+
+nav li {
+    margin-left: 4rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    display: inline-block;
+    margin: 1rem;
+    transition: color 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    width: 0%;
+    height: 3px;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    display: block;
+    transition: width 0.4s ease-in-out;
+}
+
+nav a:hover {
+    color: #ffcc00;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* =======================================================================
+   Seções de Conteúdo
+======================================================================= */
+
+/* Estilização da seção */
+#categorias {
+    padding: 4rem 0;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    flex: 1; /* Flexível para ocupar o restante do espaço disponível */
+}
+
+#categorias h2 {
+    font-size: 2rem;
+    margin-top: 8rem;
+    color: #ffa500;
+    width: fit-content;
+    margin: 4.5rem auto 0 auto;
+    transition: transform 0.3s ease;
+}
+
+#categorias h2:hover {
+    transform: scale(1.02);
+}
+
+#info-cat {
+    color: #ffc45800;
+    opacity: 0;
+    transition: opacity 0.5s ease, color 0.3s ease;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+#categorias h2:hover + #info-cat {
+    opacity: 1;
+    color: #ffa600;
+}
+
+/* Blocos das categorias */
+.categoria-blocos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Estilização de cada bloco */
+.bloco {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.bloco:hover {
+    background-color: rgba(0, 0, 0, 0);
+    transform: scale(1.05);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
+}
+
+/* Banner da categoria */
+.banner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.185);
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    transition: filter 0.3s ease;
+}
+
+.bloco:hover .banner img {
+    filter: blur(3px);
+}
+
+.descricao {
+    position: absolute;
+    background-color: #00000042;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+    color: #ffffff;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.bloco:hover .descricao {
+    opacity: 1;
+}
+
+/* Título dentro dos blocos */
+.bloco h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.35rem;
+    color: #000000;
+}
+
+/* =======================================================================
+   Rodapé
+======================================================================= */
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #8d8d8d3a;
+    backdrop-filter: blur(5px);
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+    width: 100%;
+    font-size: 0.9rem;
+    margin-top: auto; /* Garante que o footer sempre fique na parte inferior */
+}
+
+/* =======================================================================
+   Botões e Popups
+======================================================================= */
+
+/* Estilo para o botão de login circular */
+.login-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botão de Login */
+.login-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #5b5b5b;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-btn:hover {
+    transform: scale(1.2);
+    background-color: #ffcc00;
+}
+
+/* Overlay com efeito de blur */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
+    display: none; /* Inicialmente oculto */
+    z-index: 1000;
+    transition: opacity 0.3s ease; /* Animação de opacidade */
+    backdrop-filter: blur(3px);
+}
+
+.popup-overlay.active {
+    display: block; /* Torna o overlay visível */
+    opacity: 1; /* Torna o overlay visível com animação */
+    filter: blur(0); /* Remove o desfoque quando o overlay está ativo */
+}
+
+/* Popup com animação */
+.popup {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9); /* Começa menor e anima para o tamanho original */
+    background-color: #14141492;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #c1c1c145;
+    box-shadow: #000000;
+    color: white;
+    z-index: 1001; /* Fica acima do overlay */
+    width: 80%;
+    max-width: 400px;
+    opacity: 0; /* Começa invisível */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Animação de transição */
+    backdrop-filter: blur(5px);
+}
+
+
+
+.popup.active {
+    display: block;
+    opacity: 1; /* Torna o popup visível */
+    transform: translate(-50%, -50%) scale(1); /* Animação para o tamanho normal */
+    transition: transform 0.3s ease;
+}
+
+
+/* Conteúdo do popup */
+.popup-content {
+    text-align: center;
+}
+
+.popup-btn {
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    width: 80%;
+    border-radius: 5px;
+    transition: transform 0.3s ease
+}
+
+.popup-btn:hover {
+    background-color: #ff9900;
+    transform: scale(1.02);
+}
+
+/* Fechar o popup */
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #ffcc00;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - HighLevel</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="header-container">
+            <a href="homepage.html" class="logo-link">
+                <img src="logo.png" alt="Logo" class="logo">
+            </a>
+
+            <nav>
+                <ul>
+                    <li><a href="homepage.html#sobre-nos">Sobre nós</a></li>
+                    <li><a href="homepage.html#contato">Contato</a></li>
+                    <li><a href="homepage.html#categorias">Categorias</a></li>
+                    <li><a href="homepage.html#seja-hlmais">Seja HL+</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção de Cadastro -->
+    <main>
+        <section id="cadastro">
+            <div class="form-container">
+                <h2>CADASTRE-SE</h2>
+                <p>Preencha os campos abaixo para criar uma conta.</p>
+
+                <!-- Formulário de Cadastro -->
+                <form id="formCadastro" action="cadastro" method="POST" class="form-cadastro">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo:</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                            <i class="input-icon fas fa-user"></i> <!-- Ícone de usuário -->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apelido">Apelido:</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="apelido" name="apelido" required placeholder="Digite seu apelido/nickname">
+                            <i class="fas fa-tag"></i> <!-- Ícone de tag -->
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+                            <i class="input-icon fas fa-envelope"></i> <!-- Ícone de envelope -->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha:</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="senha" name="senha" required placeholder="Crie uma senha">
+                            <i class="input-icon fas fa-lock"></i> <!-- Ícone de cadeado -->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmar-senha">Confirmar Senha:</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="confirmar-senha" name="confirmar-senha" required placeholder="Confirme sua senha">
+                            <i class="input-icon fas fa-lock"></i> <!-- Ícone de cadeado -->
+                        </div>
+                    </div>
+
+                    <!-- CAPTCHA (comentado até configurar chave) -->
+                    <!-- 
+                    <div class="captcha-container">
+                        <div class="g-recaptcha" data-sitekey="your-site-key"></div>
+                    </div>
+                    -->
+
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">Cadastrar</button>
+                    </div>
+
+                    <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 HighLevel. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // script.js (validação de senha e confirmação)
+        document.getElementById("formCadastro").addEventListener("submit", function(event) {
+            // Validação da senha
+            var senha = document.getElementById("senha").value;
+            var confirmarSenha = document.getElementById("confirmar-senha").value;
+
+            if (senha !== confirmarSenha) {
+                event.preventDefault(); // Impede o envio do formulário
+                alert("As senhas não coincidem. Por favor, verifique.");
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+    // Para navegação interna na mesma página
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault(); // Impede o comportamento padrão de navegação
+
+            const targetId = this.getAttribute('href').substring(1); // Obtém o ID da seção
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth', // Ativa a rolagem suave
+                    block: 'start'      // Alinha a seção no topo da tela
+                });
+            }
+        });
+    });
+
+    // Para rolagem suave ao carregar a página com um hash (redirecionamento com #)
+    if (window.location.hash) {
+        const hash = window.location.hash.substring(1); // Obtém o ID após o #
+        const targetSection = document.getElementById(hash);
+
+        if (targetSection) {
+            window.scrollTo({
+                top: targetSection.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    }
+});
+
+
+    </script>
+
+    <!-- Inclusão do Google reCAPTCHA -->
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+</body>
+</html>
